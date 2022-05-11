@@ -1,8 +1,22 @@
-
 alert("Aplicacion para reservas.")
 
-function alojamiento(){
-    let tipoAlojamiento = prompt("Ingrese el tipo de alojamiento:" + "\n" + "- Carpa" + "\n" + "- Cabaña" + "\n" + "- Casa");
+let tipoAlojamiento = prompt("Ingrese el tipo de alojamiento:" + "\n" + "- Carpa" + "\n" + "- Cabaña" + "\n" + "- Casa");
+let cantidadPersonas = parseInt(prompt("Ingrese la cantidad de personas que van a hospedarse: "));
+let datoEstadia = parseInt(prompt("Ingrese la cantidad de días que desea hospedarse: "));
+
+function validar(){
+    while(tipoAlojamiento != "Carpa" && tipoAlojamiento != "Cabaña" && tipoAlojamiento != "Casa"){
+        alert("La opción de hospedaje " + tipoAlojamiento + " no es correcta, solo puede seleccionar Carpa, Cabaña o Casa, por favor intenta de nuevo.");
+            tipoAlojamiento = prompt("Ingrese el tipo de alojamiento:" + "\n" + "- Carpa" + "\n" + "- Cabaña" + "\n" + "- Casa");
+    }
+    while(isNaN(cantidadPersonas) || cantidadPersonas < 1){
+        alert("La cantidad de personas que desea hospedarse debe ser mayor a 0, por favor intenta de nuevo.");
+            cantidadPersonas = prompt("La cantidad de personas que van a hospedarse debe ser mayor a 0, por favor intenta de nuevo.");
+    }
+    while(isNaN(datoEstadia) || datoEstadia < 1){
+        alert("La cantidad de días que desea hospedarse debe ser mayor a 0, por favor intenta de nuevo.");
+            datoEstadia = prompt("La cantidad de días que desea hospedarse debe ser mayor a 0, por favor intenta de nuevo.");
+    }
     switch (tipoAlojamiento) {
         case "Carpa":
             tipoAlojamiento = 100;
@@ -12,121 +26,29 @@ function alojamiento(){
             break;
         case "Casa":
             tipoAlojamiento = 300;
-        console.log(tipoAlojamiento);
-        }
-    
+        } 
 }
 
-function cantidad(){
-    let cantidadPersonas = parseInt(prompt("Ingrese la cantidad de personas que van a hospedarse: "));
-    console.log(cantidadPersonas);
-    return cantidadPersonas;
-    
+function calcular(tipoAlojamiento, cantidadPersonas, datoEstadia){ 
+    let calculo = (tipoAlojamiento + (cantidadPersonas*50)) * datoEstadia
+    let calculoDolar = calculo / 117.09
+    switch (tipoAlojamiento) {
+        case 100:
+            tipoAlojamiento = "Carpa";
+            break;
+        case 200:
+            tipoAlojamiento = "Cabaña";
+            break;
+        case 300:
+            tipoAlojamiento = "Casa";
+    }
+    alert("Detalles de la reserva: \n\nTipo de alojamiento seleccionado: " + tipoAlojamiento + 
+    "\nCantidad de personas: " + cantidadPersonas + "\nEstadía: " + datoEstadia + 
+    " días.\n\nDetalle de costos: \n\nCosto total por día en pesos: " + calculo/datoEstadia + 
+    "\nCosto total por día en dólares: " + calculoDolar/datoEstadia + "\nCosto total en pesos: " + calculo + 
+    "\nCosto total en dólares: " + calculoDolar + "\n\nGracias por su reserva.");
 }
 
-function estadia(){
-    let estadia = parseInt(prompt("Ingrese la cantidad de días que desea hospedarse: "));
-    console.log(estadia);
-    return estadia;
-}
 
-//Acá creo está el error pero ya no se que cambiar
-
-function calcular(tipoAlojamiento, cantidadPersonas, estadia){ 
-    calculo = tipoAlojamiento + cantidadPersonas * estadia
-    alert(calculo);
-}
-
-cantidad();
-estadia();
-alojamiento();
-calcular();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function costoTipo(tipoAlojamiento){
-//     if (tipoAlojamiento != "Carpa" && tipoAlojamiento != "Cabaña" && tipoAlojamiento != "Casa"){
-//         alert("Debe ingresar una de las siguientes opciones: " + "\n" + "- Carpa" + "\n" + "- Cabaña" + "\n" + "- Casa");
-//     }else{
-//     switch (tipoAlojamiento) {
-//         case "Carpa":
-//             tipoAlojamiento = 100;
-//             break;
-//         case "Cabaña":
-//             tipoAlojamiento = 200;
-//             break;
-//         case "Casa":
-//             tipoAlojamiento = 300;
-//             break;
-//         default:
-//             alert("Debe ingresar una de las siguientes opciones: " + "\n" + "- Carpa" + "\n" + "- Cabaña" + "\n" + "- Casa")
-//             break;
-//         }
-//     }
-// }
-
-// function costoPersona(personas,estadia){
-//     if (personas<1){
-//         alert("Debe ingresar al menos una persona.")
-//     }else if (estadia<1){
-//         alert("Debe ingresar al menos un día de estadía.")
-
-//     }else if (tipoAlojamiento!="Carpa" && tipoAlojamiento!="Cabaña" && tipoAlojamiento!="Casa"){
-//         alert("Debe ingresar un tipo de alojamiento válido. (Carpa, Cabaña o Casa)")
-//     }else{
-//         let valorXpersona = 50 * personas * estadia + tipoAlojamiento;
-//         return valorXpersona;
-//     }
-// }
-
-// function checkOut(costoPersona){
-//     alert("El costo total de " + estadia + " días de estadía en " + tipoAlojamiento + " para un total de " + personas + " personas es de " + costoPersona + ".")
-// }
-
-
-// checkOut(costoPersona(personas,estadia));
+validar(tipoAlojamiento, cantidadPersonas, datoEstadia);
+calcular(tipoAlojamiento, cantidadPersonas, datoEstadia);
