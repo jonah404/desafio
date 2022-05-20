@@ -21,7 +21,7 @@ let tel    = prompt("Ingrese su número telefónico:");
 clientes.push(new cliente(nombre, correo, tel));
 
 do{
-    if(nombre == ""){
+    if((nombre == "") || (!isNaN(nombre))){
         alert("Por favor ingrese su nombre.");
         nombre = prompt("Bienvenido a la aplicación de reservas,\nPor favor ingrese su nombre completo:");
         clientes.splice(0,1,nombre);
@@ -47,7 +47,7 @@ do{
     }
 }
 
-while(nombre == "" || correo == "" || tel == "" || isNaN(tel));
+while((nombre == "")||(!isNaN(nombre)) || (correo == "") || (tel == "" || isNaN(tel)));
 
 console.log(clientes);
 
