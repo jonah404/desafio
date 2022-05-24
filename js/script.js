@@ -49,6 +49,12 @@ do{
 
 while((nombre == "")||(!isNaN(nombre)) || (correo == "") || (tel == "" || isNaN(tel)));
 
+let datosCliente = document.getElementById("datosCliente");
+datosCliente.innerHTML = `'<h3>Datos del cliente:</h3>
+                            <p>Nombre: ${nombre}</p>
+                            <p>Correo: ${correo}</p>
+                            <p>Teléfono: ${tel}</p>'`;
+
 console.log(clientes);
 
 //Toma de datos de la reserva ↓
@@ -78,6 +84,12 @@ const validar = alojamiento.find((tipo)=>tipo.tipo != "Carpa" && alojamiento.tip
         }           
     }
 }
+
+let datosReserva = document.getElementById("datosReserva");
+datosReserva.innerHTML = `'<h3>Datos de la reserva:</h3>
+                            <p>Tipo de alojamiento: ${tipoAlojamiento}</p>
+                            <p>Cantidad de personas: ${cantidadPersonas}</p>
+                            <p>Cantidad de días: ${datoEstadia}</p>'`;
 
 //Convertir opción seleccionada a número ↓
 
@@ -112,8 +124,17 @@ function calcular(tipoAlojamiento, cantidadPersonas, datoEstadia){
         "\nCosto total por día en dólares: " + dolarxDia.toFixed(2) + "\nCosto total en pesos: " + calculo + " ( " + xPersonaPesos 
         + " pesos por persona, por día.) \nCosto total en dólares: " + calculoDolar.toFixed(2) + " ( " + xPersonaDolar.toFixed(2) + 
         " dólares x persona, por día.) \n\nGracias por su reserva.");
-}
+    
+    let costos = document.getElementById("datosCosto");
+    costos.innerHTML = `'<h3>Detalle de costos:</h3>
+                        <p>Costo total por día en pesos: ${pesosxDia}</p>
+                        <p>Costo total por día en dólares: ${dolarxDia.toFixed(2)}</p>
+                        <p>Costo total en pesos: ${calculo} ( ${xPersonaPesos} pesos por persona, por día.) </p>
+                        <p>Costo total en dólares: ${calculoDolar.toFixed(2)} ( ${xPersonaDolar.toFixed(2)} dólares x persona, por día.) </p>'`;
+    
+    }
 
+    
 //Ejecución ↓
 
 calcular(tipoAlojamiento, cantidadPersonas, datoEstadia);
