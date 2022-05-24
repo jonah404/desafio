@@ -1,0 +1,18 @@
+#datosCliente{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    list-style: none;
+}
+#datosReserva{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    list-style: none;
+}
+#datosCosto{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    list-style: none;
+}
