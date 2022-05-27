@@ -14,9 +14,29 @@ class cliente{
 
 const clientes = [];
 
-let nombre = prompt("Bienvenido a la aplicación de reservas,\nPor favor ingrese su nombre completo:");
-let correo = prompt("Por favor ingrese su correo electrónico:");
-let tel    = prompt("Ingrese su número telefónico:");
+let nombre = document.getElementById('name');
+nombre.onchange = ()=>{
+    let nombre = document.getElementById('name').value;
+    clientes.push(new cliente(nombre, '', ''));
+}
+
+
+let correo = document.getElementById('mail');
+correo.onchange = ()=>{
+    let correo = document.getElementById('mail').value;
+    clientes.push(new cliente('', correo, ''));
+}
+
+let tel = document.getElementById('tel');
+tel.onchange = ()=>{
+    let tel = document.getElementById('tel').value;
+    clientes.push(new cliente('', '', tel));
+}
+
+
+//let nombre = prompt("Bienvenido a la aplicación de reservas,\nPor favor ingrese su nombre completo:");
+//let correo = prompt("Por favor ingrese su correo electrónico:");
+//let tel    = prompt("Ingrese su número telefónico:");
 
 clientes.push(new cliente(nombre, correo, tel));
 
@@ -60,6 +80,15 @@ console.log(clientes);
 //Toma de datos de la reserva ↓
 
 const alojamiento = [{tipo: "Carpa", tipo: "Cabaña", tipo: "Casa"}];
+
+// let tipoAlojamiento = document.querySelectorAll(".tipo");
+// for (const element of tipoAlojamiento) {
+//     element.onclick = ()=>{
+//         let alojamientoElegido = alojamiento.find((tipos)=>{ return tipos.tipo == element.value});
+//         alojamientoElegido.tipo;
+        
+//     }
+// }
 
 let tipoAlojamiento = prompt("Ingrese el tipo de alojamiento:" + "\n" + "- Carpa" + "\n" + "- Cabaña" + "\n" + "- Casa");
 let cantidadPersonas = parseInt(prompt("Ingrese la cantidad de personas que van a hospedarse: "));
