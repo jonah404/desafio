@@ -14,15 +14,15 @@ class cliente{
 
 const clientes = [];
 
-let customerData = document.getElementById("continuar");
-let nombre       = document.getElementById('name');
-let correo       = document.getElementById('mail');
-let tel          = document.getElementById('tel');
+const customerData = document.getElementById("continuar");
+const nombre       = document.getElementById('name');
+const correo       = document.getElementById('mail');
+const tel          = document.getElementById('tel');
 
 customerData.onclick = ()=>{
-    nombre = nombre.value;
-    correo = correo.value;
-    tel    = tel.value;
+    nombre.value;
+    correo.value;
+    tel.value;
         clientes.push(new cliente(nombre, correo, tel));
             console.log(clientes);
 }
@@ -39,15 +39,15 @@ customerData.onclick = ()=>{
 
 const alojamiento    = [{tipo: "Carpa", tipo: "Cabaña", tipo: "Casa"}];
 
-let tipoAlojamiento  = document.querySelectorAll('.tipo');
-let Personas         = document.getElementById('personas');
-let cantidadPersonas = document.getElementById('siguiente');
-let ingreso          = document.getElementById("desde");
-let egreso           = document.getElementById("hasta");
-let estadia          = document.getElementById("calculoEstadia");
+const tipoAlojamiento  = document.querySelectorAll('.tipo');
+const personas         = document.getElementById('personas');
+const cantidadPersonas = document.getElementById('siguiente');
+const ingreso          = document.getElementById("desde");
+const egreso           = document.getElementById("hasta");
+const estadia          = document.getElementById("calculoEstadia");
 
 for (const tipo of tipoAlojamiento) {
-    tipo.onclick = ()=>{tipoAlojamiento = tipo.value;
+    tipo.onclick = ()=>{tipoAlojamiento=tipo.value;
        switch (tipoAlojamiento) {
             case "Carpa":
              tipoAlojamiento = 100;
@@ -64,12 +64,12 @@ for (const tipo of tipoAlojamiento) {
 }
 
 cantidadPersonas.onclick = ()=>{
-    cantidadPersonas = parseInt(Personas.value);
+    parseInt(personas.value);
     console.log(cantidadPersonas);}
 
 estadia.onclick = ()=>{
-    ingreso = ingreso.value;
-    egreso  = egreso.value;
+    ingreso.value;
+    egreso.value;
     estadia = parseInt(egreso) - parseInt(ingreso);
     console.log(estadia);
 }
