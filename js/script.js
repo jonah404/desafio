@@ -1,131 +1,57 @@
-//Aplicacion para realizar reservas.
+const nombreCompleto   = document.getElementById('nombre');
+const userEmail        = document.getElementById('userEmail');
+const tipoAlojamiento  = document.getElementsByClassName('.tipo');
+const fechaIngreso     = document.getElementById('checkin');
+const fechaSalida      = document.getElementById('checkout');
+const cantidadPersonas = document.getElementById('cantidadPersonas');
+const btnConfirmacion  = document.getElementById('confirmacion'); 
+const datosReserva     = document.querySelector('.mostrarDatos');
 
-//Toma de datos del cliente ↓
+const alojamientos = 
+[{
+    tipo: "Carpa",
+    precio: 100,
+},
+{
+    tipo: "Cabaña",
+    precio: 200,
+},
+{
+    tipo: "Casa",
+    precio: 300,
+}];
 
-class cliente{
-    constructor (nombreCompleto, correoElectronico, telefono){
-
-        this.nombreCompleto    = nombreCompleto.toUpperCase();
-        this.correoElectronico = correoElectronico.toUpperCase();
-        this.telefono          = parseInt(telefono);
-
+class Reservar {
+    constructor(nombreCompleto, userEmail, tipoAlojamiento, fechaIngreso, fechaSalida, cantidadPersonas) 
+    {
+        this.nombreCompleto   = (nombreCompleto);
+        this.userEmail        = (userEmail);
+        this.tipoAlojamiento  = (tipoAlojamiento);
+        this.fechaIngreso     = new Date(fechaIngreso + "T00:00:00");
+        this.fechaSalida      = new Date(fechaSalida + "T23:59:59");
+        this.cantidadPersonas = parseInt(cantidadPersonas);
     }
 }
 
-const clientes = [];
-
-const customerData = document.getElementById("continuar");
-const nombre       = document.getElementById('name');
-const correo       = document.getElementById('mail');
-const tel          = document.getElementById('tel');
-
-customerData.onclick = ()=>{
-    nombre.value;
-    correo.value;
-    tel.value;
-        clientes.push(new cliente(nombre, correo, tel));
-            console.log(clientes);
+function cargarReserva () {
+    const reserva = new Reservar
+    (
+        nombreCompleto.value, 
+        userEmail.value, 
+        tipoAlojamiento.checked, 
+        fechaIngreso.value, 
+        fechaSalida.value, 
+        cantidadPersonas.value
+    );
+    console.log(reserva);
 }
 
-// let datosCliente = document.getElementById("datosCliente");
-// datosCliente.innerHTML = `'<h3>Datos del cliente:</h3>
-//                             <p>Nombre: ${clientes[0]}</p>
-//                             <p>Correo: ${clientes[1]}</p>
-//                             <p>Teléfono: ${clientes[2]}</p>'`;
-
-// console.log(clientes);
-
-//Toma de datos de la reserva ↓
-
-const alojamiento    = [{tipo: "Carpa", tipo: "Cabaña", tipo: "Casa"}];
-
-const tipoAlojamiento  = document.querySelectorAll('.tipo');
-const personas         = document.getElementById('personas');
-const cantidadPersonas = document.getElementById('siguiente');
-const ingreso          = document.getElementById("desde");
-const egreso           = document.getElementById("hasta");
-const estadia          = document.getElementById("calculoEstadia");
-
-for (const tipo of tipoAlojamiento) {
-    tipo.onclick = ()=>{tipoAlojamiento=tipo.value;
-       switch (tipoAlojamiento) {
-            case "Carpa":
-             tipoAlojamiento = 100;
-                    break;
-            case "Cabaña":
-                tipoAlojamiento = 200;
-                    break;
-            case "Casa":
-                tipoAlojamiento = 300;
-                    break;
-            }
-        console.log(tipoAlojamiento); 
-    }
+function diasEstadia (fechaIngreso, fechaSalida) {
+    const fecha1= new Date(fechaIngreso);
+    const fecha2= new Date(fechaSalida);
+    const dias = (fecha2 - fecha1) / (1000 * 60 * 60 * 24);
+    console.log(Number(dias));
 }
 
-cantidadPersonas.onclick = ()=>{
-    parseInt(personas.value);
-    console.log(cantidadPersonas);}
 
-estadia.onclick = ()=>{
-    ingreso.value;
-    egreso.value;
-    estadia = parseInt(egreso) - parseInt(ingreso);
-    console.log(estadia);
-}
-
-// (tipoAlojamiento) => tipoAlojamiento
-//     {
-//         switch (tipoAlojamiento) {
-//             case "Carpa":
-//             tipoAlojamiento = 100;
-//             break;
-//             case "Cabaña":
-//             tipoAlojamiento = 200;
-//             break;
-//             case "Casa":
-//             tipoAlojamiento = 300;
-//         } 
-//     }   
-// console.log(tipoAlojamiento);
-
-// let datosReserva = document.getElementById("datosReserva");
-// datosReserva.innerHTML = `'<h3>Datos de la reserva:</h3>
-//                             <p>Tipo de alojamiento: ${tipoAlojamiento}</p>
-//                             <p>Cantidad de personas: ${cantidadPersonas}</p>
-//                             <p>Cantidad de días: </p>'`;
-
-//Convertir opción seleccionada a número ↓
-
-
-
-//Fin del flujo de toma de datos.
-
-//Comienza función de calcular costos ↓
-
-function calcular(tipoAlojamiento, cantidadPersonas, datoEstadia){ 
-    let calculo       = (tipoAlojamiento + (cantidadPersonas*50)) * datoEstadia
-    let calculoDolar  = calculo / 117.09
-    let dolarxDia     = calculoDolar / datoEstadia;
-    let pesosxDia     = calculo / datoEstadia;
-    let xPersonaPesos = pesosxDia / cantidadPersonas;
-    let xPersonaDolar = dolarxDia / cantidadPersonas;
-        // alert("Hola " + nombre + ", estos son los detalles de la reserva: \n\nTipo de alojamiento seleccionado: " 
-        // + tipoAlojamiento + "\nCantidad de personas: " + cantidadPersonas + "\nEstadía: " + datoEstadia + 
-        // " días.\n\nDetalle de costos: \n\nCosto total por día en pesos: " + pesosxDia + 
-        // "\nCosto total por día en dólares: " + dolarxDia.toFixed(2) + "\nCosto total en pesos: " + calculo + " ( " + xPersonaPesos 
-        // + " pesos por persona, por día.) \nCosto total en dólares: " + calculoDolar.toFixed(2) + " ( " + xPersonaDolar.toFixed(2) + 
-        // " dólares x persona, por día.) \n\nGracias por su reserva.");
-    
-    let costos = document.getElementById("datosCosto");
-    costos.innerHTML = `'<h3>Detalle de costos:</h3>
-                        <p>Costo total por día en pesos: ${pesosxDia}</p>
-                        <p>Costo total por día en dólares: ${dolarxDia.toFixed(2)}</p>
-                        <p>Costo total en pesos: ${calculo} ( ${xPersonaPesos} pesos por persona, por día.) </p>
-                        <p>Costo total en dólares: ${calculoDolar.toFixed(2)} ( ${xPersonaDolar.toFixed(2)} dólares x persona, por día.) </p>'`;
-    
-    }
- 
-//Ejecución ↓
-
-calcular(tipoAlojamiento, cantidadPersonas);
+btnConfirmacion.addEventListener('click', diasEstadia);
