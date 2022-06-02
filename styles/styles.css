@@ -1,18 +1,45 @@
-#datosCliente{
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    list-style: none;
+.ingresoPrincipal{
+    width: 50%;
+    border-radius: 5px;
+    border-style: dashed;
+    border-width: 2px;
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
-#datosReserva{
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    list-style: none;
+.mostrar{
+    display:flex;
 }
-#datosCosto{
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 15px;
+
+.ocultar{
+    display:none;
+}
+
+.centrar{
+    text-align:center;
+}
+
+.background{
+    background-image: url("../src/mountain.jpg");
+}
+
+.casilla{
+    width: 90%;
+}
+
+.primerSeccion, 
+.segundaSeccion,
+.tercerSeccion,
+.cuartaSeccion,
+.finalizar{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    padding: 10px 0;;
+}
+
+.options{
     list-style: none;
 }
