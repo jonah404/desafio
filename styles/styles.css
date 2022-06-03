@@ -1,8 +1,8 @@
 .ingresoPrincipal{
     width: 50%;
     border-radius: 5px;
-    border-style: dashed;
-    border-width: 2px;
+    border-style: solid;
+    border-width: 1px;
     margin:auto;
     display: flex;
     justify-content: center;
@@ -15,6 +15,20 @@
 
 .ocultar{
     display:none;
+}
+
+.mostrarDatos{
+    width: 50%;
+    border-style: dotted;
+    border-width: 2px;
+    border-radius: 5px;
+    margin:auto;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    text-align:center;
+    padding: 10px;
+
 }
 
 .centrar{
