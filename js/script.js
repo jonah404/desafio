@@ -1,11 +1,12 @@
-const nombreCompleto   = document.getElementById('nombre');
-const userEmail        = document.getElementById('userEmail');
-const tipoAlojamiento  = document.querySelector('.tipo:checked');
-const fechaIngreso     = document.getElementById('checkin');
-const fechaSalida      = document.getElementById('checkout');
-const cantidadPersonas = document.getElementById('cantidadPersonas');
-const btnConfirmacion  = document.getElementById('confirmacion'); 
-const datosReserva     = document.querySelector('.mostrarDatos');
+const nombreCompleto    = document.getElementById('nombre');
+const userEmail         = document.getElementById('userEmail');
+const tipoAlojamiento   = document.querySelector('.tipo:checked');
+const fechaIngreso      = document.getElementById('checkin');
+const fechaSalida       = document.getElementById('checkout');
+const cantidadPersonas  = document.getElementById('cantidadPersonas');
+const btnConfirmacion   = document.getElementById('confirmacion'); 
+const datosReserva      = document.querySelector('.mostrarDatos');
+const reservaConfirmada = document.querySelector('.ingresoPrincipal');
 
 const alojamientos = 
 [{
@@ -73,7 +74,7 @@ function dataStorge (tipoAlojamiento, fechaIngreso, fechaSalida, cantidadPersona
 btnConfirmacion.addEventListener('click',() => {
     datosCliente();
     storageCliente(nombreCompleto.value, userEmail.value);
-    alojamientoSeleccionado(tipoAlojamiento);
+    alojamientoSeleccionado();
     estadia(fechaIngreso.value, fechaSalida.value);
     inquilinos();
     dataStorge(tipoAlojamiento.value, fechaIngreso.value, fechaSalida.value, cantidadPersonas.value);
@@ -81,6 +82,8 @@ btnConfirmacion.addEventListener('click',() => {
     costoEstadia();
     datosReserva.classList.remove('ocultar');
     datosReserva.classList.add('mostrar');
+    reservaConfirmada.classList.remove('mostrar');
+    reservaConfirmada.classList.add('ocultar');
     mostrarDatosReserva();
 });
 
